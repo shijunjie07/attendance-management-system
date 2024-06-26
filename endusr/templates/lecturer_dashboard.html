@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Lecturer Dashboard{% endblock %}
+
+{% block content %}
+<h2>Lecturer Dashboard</h2>
+<p>Welcome, {{ current_user.email }}!</p>
+<a href="{{ url_for('add_class') }}">Add Class</a>
+
+<h3>Your Classes</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Course Code</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Location</th>
+            <th>Attendance</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for data in attendance_data %}
+        <tr>
+            <td>{{ data.class.course_code }}</td>
+            <td>{{ data.class.start_time }}</td>
+            <td>{{ data.class.end_time }}</td>
+            <td>{{ data.class.location }}</td>
+            <td>{{ data.attended }}/{{ data.total }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

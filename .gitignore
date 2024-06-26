@@ -1,0 +1,8 @@
+known_faces/
+
+endusr/__pycache__/
+
+host/__pycache__/
+socket_server/__pycache__/
+
+__pycache__/
