@@ -43,7 +43,7 @@ def _gen_embedding(file_name) -> torch.Tensor:
 
 devices = {
     'demo_1': {
-        'ip': '192.168.0.105',
+        'ip': '192.168.4.3',
         'port': 80,
     },
     'demo_2': {

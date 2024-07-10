@@ -40,19 +40,19 @@ if __name__ == '__main__':
     start_status_check_thread(sql_handler, CHECK_INTERVAL)
     app.run(debug=True, host='0.0.0.0', port=APP_SERVER_PORT)
 
-# # # backend_app/app.py
-# # from flask import Flask
-# # from flask_sqlalchemy import SQLAlchemy
-# # from config import SQLALCHEMY_DATABASE_URL, SQLALCHEMY_TRACK_MODIFICATIONS, SECRET_KEY
+# # # # backend_app/app.py
+# # # from flask import Flask
+# # # from flask_sqlalchemy import SQLAlchemy
+# # # from config import SQLALCHEMY_DATABASE_URL, SQLALCHEMY_TRACK_MODIFICATIONS, SECRET_KEY
 
-# # db = SQLAlchemy()
+# # # db = SQLAlchemy()
 
 # from flask import Flask
 # from flask_sqlalchemy import SQLAlchemy
 # from config import SQLALCHEMY_DATABASE_URL, SQLALCHEMY_TRACK_MODIFICATIONS, SECRET_KEY
 
-# db = SQLAlchemy()
 # app = Flask(__name__, instance_relative_config=True)
+# db = SQLAlchemy()
 
 # def create_app():
 #     app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URL

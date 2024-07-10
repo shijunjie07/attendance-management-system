@@ -14,7 +14,10 @@ from datetime import datetime
 
 from .recg import process_image
 # from backend_app.sql_handler import SQLHandler
-from backend_app.app import sql_handler
+# from host.app import sql_handler
+
+from host.sql_handler import SQLHandler
+sql_handler = SQLHandler()
 
 # sql_handler = SQLHandler()
 CLASS_DATE = '2024-06-15'
@@ -62,7 +65,7 @@ async def send_message(websocket, message_queue, image_queue, attendance_recorde
         # --------------------------------------------------------------
         
         image, processed_message, data = await process_image(message)
-        msgs = json.load(processed_message)
+        msgs = json.loads(processed_message)
             # attendance_recorded.append(image_info)
         # await image_queue.put(image_info)
         # print(processed_message)
@@ -79,15 +82,17 @@ async def send_message(websocket, message_queue, image_queue, attendance_recorde
                 
                 # locate the class now - for now we assume the first one
                 # ignore
-
-                # check if student in class
-                classes_by_student = sql_handler.get_classes(
-                    by='student_date', student_id=student_id, date=CLASS_DATE)
-                class_ids_by_student = [class_.class_id for class_ in classes_by_student]
-                
-                if class_now.class_id not in class_ids_by_student:
-                    # student not in class
+                print(student_id)
+                if student_id == 'Undetected':
                     continue
+                # # check if student in class
+                # classes_by_student = sql_handler.get_classes(
+                #     by='student_date', student_id=student_id, date=CLASS_DATE)
+                # class_ids_by_student = [class_.class_id for class_ in classes_by_student]
+                
+                # if class_now.class_id not in class_ids_by_student:
+                #     # student not in class
+                #     continue
                 
                 # check if student in class time - ignore for now
                 
@@ -126,7 +131,7 @@ async def send_message(websocket, message_queue, image_queue, attendance_recorde
 
                     # store the message for visualisation
                     image_info = [image, processed_message, data]
-                    await image_queue.put(image_info)
+                    # await image_queue.put(image_info)
 
         message_queue.task_done()
 
@@ -227,4 +232,4 @@ async def start_socket_server(port):
 def run_socket_server(port):
     asyncio.run(start_socket_server(port))
 
-# run_socket_server(5000)
+run_socket_server(5000)

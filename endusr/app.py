@@ -6,9 +6,6 @@ from flask_login import LoginManager
 from config import *
 
 
-
-
-
 app = Flask(__name__, instance_relative_config=True)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URL
@@ -38,8 +35,8 @@ if __name__ == '__main__':
 
 
 
-# # # backend_app/app.py
-# # # webapp_demo/app.py
+# # backend_app/app.py
+# # webapp_demo/app.py
 
 
 
